@@ -1,0 +1,16 @@
+:root {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+header nav {
+    background-color: rgb(184, 107, 255);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+}
