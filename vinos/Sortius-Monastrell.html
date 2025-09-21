@@ -4,68 +4,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprar Vino Exclusivo</title>
-    <link rel="stylesheet" href="../styles/styles-vinos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Gran Reserva Selecto | Bodega Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/premium-styles.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <div class="logo"><a href="../index.html">🍇 Bodegas Contreras</a></div>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <a href="../index.html" class="logo">Bodega</a>
+            <nav>
+                <ul>
+                    <li><a href="#">Vinos</a></li>
+                    <li><a href="#">Historia</a></li>
+                    <li><a href="#">Maridajes</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">🛒</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main class="product-card">
-        <div class="product-image-gallery">
-            <img src="../img/uvio-c.jpg" alt="Vino tinto reserva" class="main-image" id="main-product-image">
-            <div class="thumbnail-images">
-                <img src="vino1.jpg" alt="Vino tinto vista 1" class="thumbnail active" data-image="vino1.jpg">
-                <img src="vino2.jpg" alt="Vino tinto vista 2" class="thumbnail" data-image="vino2.jpg">
-                <img src="vino3.jpg" alt="Vino tinto botella" class="thumbnail" data-image="vino3.jpg">
-            </div>
-        </div>
-        <div class="product-details">
-            <h1 class="product-title">Sortius Monastrell</h1>
-            <p class="product-subtitle">Reserva 2018 - D.O. Rioja</p>
-            <div class="price">
-                <span class="current-price">€45.99</span>
-                <span class="old-price">€59.99</span>
-            </div>
-            <p class="description">
-                Un vino tinto de alta gama, elaborado con uvas seleccionadas de viñedos centenarios. Su crianza en
-                barrica de roble francés le otorga notas de vainilla y especias, con un final largo y elegante. Ideal
-                para maridar con carnes rojas y quesos curados.
-            </p>
-
-            <div class="features">
-                <h2>Características</h2>
-                <ul>
-                    <li><i class="fas fa-wine-bottle"></i> <b>Tipo:</b> Tinto Reserva</li>
-                    <li><i class="fas fa-star-half-alt"></i> <b>Crianza:</b> 24 meses en barrica de roble</li>
-                    <li><i class="fas fa-leaf"></i> <b>Variedad:</b> Tempranillo</li>
-                    <li><i class="fas fa-map-marker-alt"></i> <b>Origen:</b> D.O. Rioja</li>
-                    <li><i class="fas fa-tint"></i> <b>Añada:<b> 2018</li>
-                </ul>
+    <div class="product-container">
+        <div class="product-content">
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="https://via.placeholder.com/600x800/8B0000/F8F8F8?text=Vino+Premium"
+                        alt="Vino Tinto Reserva Especial">
+                </div>
+                <div class="thumbnail-images">
+                    <div class="thumbnail active">
+                        <img src="https://via.placeholder.com/80x80/8B0000/F8F8F8?text=1" alt="Miniatura 1">
+                    </div>
+                    <div class="thumbnail">
+                        <img src="https://via.placeholder.com/80x80/8B0000/F8F8F8?text=2" alt="Miniatura 2">
+                    </div>
+                    <div class="thumbnail">
+                        <img src="https://via.placeholder.com/80x80/8B0000/F8F8F8?text=3" alt="Miniatura 3">
+                    </div>
+                </div>
             </div>
 
-            <div class="actions">
-                <button class="buy-button"><i class="fas fa-shopping-cart"></i> Añadir al Carrito</button>
+            <div class="product-info">
+                <div class="product-breadcrumb">
+                    <a href="#">Bodega</a> / <a href="#">Vinos Tintos</a> / Gran Reserva Selecto
+                </div>
+
+                <h1 class="product-title">Gran Reserva Selecto 2020</h1>
+
+                <div class="product-rating">
+                    <div class="rating-stars">
+                        <span>⭐️⭐️⭐️⭐️⭐️</span>
+                    </div>
+                    <div class="rating-text">4.5 (128 valoraciones)</div>
+                </div>
+
+                <div class="product-price">95,00 €</div>
+
+                <p class="product-description">
+                    Un vino tinto de autor, cuidadosamente elaborado a partir de una selección de uvas Cabernet
+                    Sauvignon y Carmenere de nuestros viñedos más antiguos. Su crianza de 18 meses en barricas de roble
+                    francés le confiere una complejidad inigualable, con notas de frutos del bosque, tabaco y especias
+                    que perduran en el paladar.
+                </p>
+
+                <div class="product-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Variedad</div>
+                        <div class="detail-value">Cabernet Sauvignon & Carmenere</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Añada</div>
+                        <div class="detail-value">2020</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Graduación</div>
+                        <div class="detail-value">14.5% Vol.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Origen</div>
+                        <div class="detail-value">Valle Central, Chile</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Crianza</div>
+                        <div class="detail-value">18 meses en roble francés</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Temperatura</div>
+                        <div class="detail-value">16 - 18 °C</div>
+                    </div>
+                </div>
+
+                <div class="quantity-selector">
+                    <div class="quantity-label">Cantidad:</div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                        <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
+                        <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="add-to-cart-btn" onclick="addToCart()">Añadir al Carrito</button>
+                </div>
+
+                <div class="product-features">
+                    <h3 class="features-title">Garantía de Origen</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-text">Calidad de Vinos de Autor</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-text">Envío Protegido</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-text">Garantía de Bodega</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-text">Asesoría Personalizada</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
+
+    <div class="snackbar" id="snackbar"></div>
 
     <footer>
-        <p>© 2025 Vinos de Bodega. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Nuestra Bodega</h3>
+                <p>Nacidos de la pasión por la tierra y la enología. Descubre un legado de sabor en cada copa.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Explora</h3>
+                <ul>
+                    <li><a href="#">Nuestra Historia</a></li>
+                    <li><a href="#">El Viñedo</a></li>
+                    <li><a href="#">Maridaje</a></li>
+                    <li><a href="#">Club del Vino</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Envío y Devoluciones</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Bodega Premium. Todos los derechos reservados.</p>
+        </div>
     </footer>
-
-    <script src="script.js"></script>
+    <script src="script-premium.js"></script>
 </body>
 
 </html>
