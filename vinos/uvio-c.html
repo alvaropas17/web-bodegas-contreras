@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Vino Exclusivo</title>
+    <link rel="stylesheet" href="../styles/styles-vinos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="../index.html">🍇 Bodegas Contreras</a></div>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="product-card">
+        <div class="product-image-gallery">
+            <img src="../img/uvio-c.jpg" alt="Vino tinto reserva" class="main-image" id="main-product-image">
+            <div class="thumbnail-images">
+                <img src="vino1.jpg" alt="Vino tinto vista 1" class="thumbnail active" data-image="vino1.jpg">
+                <img src="vino2.jpg" alt="Vino tinto vista 2" class="thumbnail" data-image="vino2.jpg">
+                <img src="vino3.jpg" alt="Vino tinto botella" class="thumbnail" data-image="vino3.jpg">
+            </div>
+        </div>
+        <div class="product-details">
+            <h1 class="product-title">Uvio C</h1>
+            <p class="product-subtitle">Reserva 2018 - D.O. Rioja</p>
+            <div class="price">
+                <span class="current-price">€45.99</span>
+                <span class="old-price">€59.99</span>
+            </div>
+            <p class="description">
+                Un vino tinto de alta gama, elaborado con uvas seleccionadas de viñedos centenarios. Su crianza en
+                barrica de roble francés le otorga notas de vainilla y especias, con un final largo y elegante. Ideal
+                para maridar con carnes rojas y quesos curados.
+            </p>
+
+            <div class="features">
+                <h2>Características</h2>
+                <ul>
+                    <li><i class="fas fa-wine-bottle"></i> <b>Tipo:</b> Tinto Reserva</li>
+                    <li><i class="fas fa-star-half-alt"></i> <b>Crianza:</b> 24 meses en barrica de roble</li>
+                    <li><i class="fas fa-leaf"></i> <b>Variedad:</b> Tempranillo</li>
+                    <li><i class="fas fa-map-marker-alt"></i> <b>Origen:</b> D.O. Rioja</li>
+                    <li><i class="fas fa-tint"></i> <b>Añada:<b> 2018</li>
+                </ul>
+            </div>
+
+            <div class="actions">
+                <button class="buy-button"><i class="fas fa-shopping-cart"></i> Añadir al Carrito</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Vinos de Bodega. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
