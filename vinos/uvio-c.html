@@ -4,68 +4,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprar Vino Exclusivo</title>
-    <link rel="stylesheet" href="../styles/styles-vinos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Vinum Vitae - Reserva Prestige</title>
+    <!-- Importamos las fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Variables y estilos globales */
+        :root {
+            --brand-primary: #A03232;
+            --brand-secondary: #000000;
+            --brand-tertiary: #F5F5DC;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--brand-tertiary);
+            color: var(--brand-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Estilos del Header */
+        .header {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .header .logo {
+            font-size: 2.25rem;
+            font-family: var(--font-serif);
+            color: var(--brand-primary);
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        /* Estilos de la ficha de producto */
+        .product-section {
+            padding: 4rem 0;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .product-details h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--brand-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-details .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-details .description {
+            font-weight: 300;
+            color: #4b5563;
+            /* Gris */
+            margin-bottom: 2rem;
+        }
+
+        .product-details h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-details li {
+            background-color: var(--brand-tertiary);
+            padding: 0.75rem 1rem;
+            border-left: 3px solid var(--brand-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .product-details .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--brand-primary);
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            margin-top: 3rem;
+        }
+
+        .product-details .buy-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Caja de mensajes de confirmación */
+        .message-box {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 101;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            background-color: #48bb78;
+            /* Verde de éxito */
+        }
+
+        .message-box.show {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .product-card {
+                flex-direction: row;
+            }
+
+            .product-image {
+                padding: 4rem;
+            }
+
+            .product-details {
+                padding: 4rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="logo"><a href="../index.html">🍇 Bodegas Contreras</a></div>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
+
+    <!-- Caja de mensajes de confirmación -->
+    <div id="message-box" class="message-box">
+        <p id="message-text"></p>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">VINUM VITAE</a>
+        </div>
     </header>
 
-    <main class="product-card">
-        <div class="product-image-gallery">
-            <img src="../img/uvio-c.jpg" alt="Vino tinto reserva" class="main-image" id="main-product-image">
-            <div class="thumbnail-images">
-                <img src="vino1.jpg" alt="Vino tinto vista 1" class="thumbnail active" data-image="vino1.jpg">
-                <img src="vino2.jpg" alt="Vino tinto vista 2" class="thumbnail" data-image="vino2.jpg">
-                <img src="vino3.jpg" alt="Vino tinto botella" class="thumbnail" data-image="vino3.jpg">
-            </div>
-        </div>
-        <div class="product-details">
-            <h1 class="product-title">Uvio C</h1>
-            <p class="product-subtitle">Reserva 2018 - D.O. Rioja</p>
-            <div class="price">
-                <span class="current-price">€45.99</span>
-                <span class="old-price">€59.99</span>
-            </div>
-            <p class="description">
-                Un vino tinto de alta gama, elaborado con uvas seleccionadas de viñedos centenarios. Su crianza en
-                barrica de roble francés le otorga notas de vainilla y especias, con un final largo y elegante. Ideal
-                para maridar con carnes rojas y quesos curados.
-            </p>
+    <!-- Ficha de producto -->
+    <main>
+        <section class="product-section">
+            <div class="container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://placehold.co/600x800/A03232/F5F5DC?text=VINO+PREMIUM"
+                            alt="Botella de Vino Reserva Prestige">
+                    </div>
+                    <div class="product-details">
+                        <h1>Reserva Prestige</h1>
+                        <span class="price">95€</span>
+                        <p class="description">
+                            Una joya de nuestra bodega, el Reserva Prestige es un vino tinto de gran cuerpo y
+                            complejidad, elaborado con uvas seleccionadas de viñedos centenarios. Ha envejecido durante
+                            24 meses en barricas de roble francés y americano, resultando en un vino que encapsula la
+                            esencia de la tradición y el buen hacer.
+                        </p>
 
-            <div class="features">
-                <h2>Características</h2>
-                <ul>
-                    <li><i class="fas fa-wine-bottle"></i> <b>Tipo:</b> Tinto Reserva</li>
-                    <li><i class="fas fa-star-half-alt"></i> <b>Crianza:</b> 24 meses en barrica de roble</li>
-                    <li><i class="fas fa-leaf"></i> <b>Variedad:</b> Tempranillo</li>
-                    <li><i class="fas fa-map-marker-alt"></i> <b>Origen:</b> D.O. Rioja</li>
-                    <li><i class="fas fa-tint"></i> <b>Añada:<b> 2018</li>
-                </ul>
-            </div>
+                        <h3>Notas de Cata</h3>
+                        <ul>
+                            <li>Intenso color rojo rubí con destellos granates.</li>
+                            <li>Aromas a frutos negros maduros (mora, ciruela) combinados con notas de vainilla y
+                                especias.</li>
+                            <li>En boca, es potente, elegante y sedoso, con un final largo y persistente.</li>
+                        </ul>
 
-            <div class="actions">
-                <button class="buy-button"><i class="fas fa-shopping-cart"></i> Añadir al Carrito</button>
+                        <h3>Maridaje</h3>
+                        <ul>
+                            <li>Ideal con carnes rojas asadas.</li>
+                            <li>Excelente con quesos curados.</li>
+                            <li>Marida a la perfección con estofados y guisos tradicionales.</li>
+                        </ul>
+
+                        <button id="add-to-cart-btn" class="buy-btn">Añadir al Carrito</button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <footer>
-        <p>© 2025 Vinos de Bodega. Todos los derechos reservados.</p>
-    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
 
-    <script src="script.js"></script>
+            // Función para mostrar mensajes de confirmación
+            const showMessage = (message) => {
+                messageText.textContent = message;
+                messageBox.classList.add('show');
+                setTimeout(() => {
+                    messageBox.classList.remove('show');
+                }, 3000);
+            };
+
+            // Event listener para el botón "Añadir al Carrito"
+            addToCartBtn.addEventListener('click', () => {
+                showMessage('¡Producto añadido al carrito!');
+            });
+        });
+    </script>
 </body>
 
 </html>
