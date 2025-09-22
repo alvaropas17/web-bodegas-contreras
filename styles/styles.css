@@ -99,7 +99,7 @@ nav a:hover {
 
 /* Parallax Hero Section */
 .hero {
-    height: 100vh;
+    height: 64vh;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -113,7 +113,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 120%;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://placehold.co/1920x1080/7d2e4c/f8f5f2?text=Bodega+Contreras') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
     z-index: -1;
     transform: translateY(0);
     will-change: transform;
