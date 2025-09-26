@@ -5,931 +5,270 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bodegas Contreras | Experiencia Vinícola Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary: #7d2e4c;
-            --secondary: #a8553d;
-            --accent: #c9a27e;
-            --light: #f8f5f2;
-            --dark: #2a2a2a;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(248, 245, 242, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(125, 46, 76, 0.1);
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .logo span {
-            font-weight: 600;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: var(--dark);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: 80px;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://placehold.co/1920x1080/7d2e4c/f8f5f2?text=Bodega+Contreras') center/cover no-repeat;
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 650px;
-            color: white;
-            padding: 0 20px;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero-title {
-            font-size: 64px;
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 30px;
-        }
-
-        .hero-title span {
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .hero-text {
-            font-size: 18px;
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* Products Section */
-        .section {
-            padding: 120px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 42px;
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 300;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 80px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            height: 350px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .product-content {
-            padding: 30px;
-        }
-
-        .product-title {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .product-desc {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-
-        .product-price {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 20px;
-        }
-
-        .product-link {
-            display: inline-block;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding-right: 25px;
-        }
-
-        .product-link::after {
-            content: '→';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: var(--transition);
-        }
-
-        .product-link:hover::after {
-            transform: translateY(-50%) translateX(5px);
-        }
-
-        /* Experience Section */
-        .experience {
-            background: linear-gradient(rgba(125, 46, 76, 0.9), rgba(125, 46, 76, 0.9)), url('https://placehold.co/1920x800/a8553d/f8f5f2?text=Experiencia+Vinícola') center/cover no-repeat;
-            color: white;
-            text-align: center;
-        }
-
-        .experience .section-title {
-            color: white;
-        }
-
-        .experience .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .experience-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .experience-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 40px 30px;
-            transition: var(--transition);
-        }
-
-        .experience-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .experience-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .experience-card h3 {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .experience-card p {
-            margin-bottom: 25px;
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            align-items: center;
-        }
-
-        .contact-info h3 {
-            font-size: 28px;
-            font-weight: 500;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
-
-        .contact-details {
-            margin-bottom: 40px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            color: white;
-            font-size: 20px;
-        }
-
-        .contact-text h4 {
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .contact-text p,
-        .contact-text a {
-            color: #666;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .contact-text a:hover {
-            color: var(--primary);
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 25px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: var(--transition);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(125, 46, 76, 0.1);
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 80px 0 30px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .footer-col h4 {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-col h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--accent);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-
-        .footer-links a {
-            color: #aaa;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            nav {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: white;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-                transform: translateY(-150%);
-                transition: var(--transition);
-                z-index: 999;
-            }
-
-            nav.active {
-                transform: translateY(0);
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .hero-title {
-                font-size: 42px;
-            }
-
-            .section {
-                padding: 80px 0;
-            }
-
-            .section-title {
-                font-size: 32px;
+        /* Configuración personalizada de colores y fuentes (opcional si usas un archivo tailwind.config.js) */
+        /* Para este ejemplo, lo definiremos con la configuración JIT de Tailwind, pero si usas el CLI,
+           lo harías en el archivo de configuración. */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Paleta basada en tus variables:
+                        'rosewood': '#7d2e4c', // --primary (Rose-900 oscuro)
+                        'terra': '#a8553d', // --secondary (Naranja terracota)
+                        'latón': '#c9a27e', // --accent (Oro apagado)
+                        'crema': '#f8f5f2', // --light (Fondo minimalista)
+                        'grafito': '#2a2a2a', // --dark (Texto)
+                    },
+                    fontFamily: {
+                        sans: ['Georgia', 'serif'], // Fuente elegante y tradicional
+                        serif: ['Georgia', 'serif'],
+                        display: ['Playfair Display', 'serif'], // Para títulos grandes
+                    },
+                    transitionTimingFunction: {
+                        'premium': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)', // Tu curva personalizada
+                    }
+                }
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container header-container">
-            <a href="#" class="logo">Bodegas <span>Contreras</span></a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-            <nav id="nav">
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#vinos">Nuestros Vinos</a></li>
-                    <li><a href="#experiencia">Experiencia</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
+<body class="bg-crema text-grafito antialiased font-sans">
+
+    <header id="header" class="fixed top-0 left-0 w-full z-50 bg-crema/95 backdrop-blur-sm shadow-md transition-all duration-500 ease-in-out">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-5">
+                <a href="#" class="text-3xl font-light tracking-wider text-rosewood uppercase">
+                    Bodegas <span class="font-medium">Contreras</span>
+                </a>
+                
+                <nav id="nav" class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#inicio" class="text-grafito text-lg font-medium tracking-wide relative group transition duration-300 hover:text-rosewood">
+                            Inicio
+                            <span class="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-rosewood transition-all duration-500 group-hover:w-full"></span>
+                        </a></li>
+                        <li><a href="#vinos" class="text-grafito text-lg font-medium tracking-wide relative group transition duration-300 hover:text-rosewood">
+                            Nuestros Vinos
+                            <span class="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-rosewood transition-all duration-500 group-hover:w-full"></span>
+                        </a></li>
+                        <li><a href="#experiencia" class="text-grafito text-lg font-medium tracking-wide relative group transition duration-300 hover:text-rosewood">
+                            Experiencia
+                            <span class="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-rosewood transition-all duration-500 group-hover:w-full"></span>
+                        </a></li>
+                        <li><a href="#contacto" class="text-grafito text-lg font-medium tracking-wide relative group transition duration-300 hover:text-rosewood">
+                            Contacto
+                            <span class="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-rosewood transition-all duration-500 group-hover:w-full"></span>
+                        </a></li>
+                    </ul>
+                </nav>
+
+                <button class="md:hidden text-2xl text-rosewood" id="mobile-menu-btn">☰</button>
+            </div>
         </div>
+        <nav id="mobile-menu" class="hidden md:hidden bg-crema shadow-lg transition-all duration-500 overflow-hidden">
+            <ul class="flex flex-col p-4 space-y-3">
+                <li><a href="#inicio" class="block py-2 text-grafito text-lg hover:text-rosewood transition">Inicio</a></li>
+                <li><a href="#vinos" class="block py-2 text-grafito text-lg hover:text-rosewood transition">Nuestros Vinos</a></li>
+                <li><a href="#experiencia" class="block py-2 text-grafito text-lg hover:text-rosewood transition">Experiencia</a></li>
+                <li><a href="#contacto" class="block py-2 text-grafito text-lg hover:text-rosewood transition">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="hero-bg"></div>
-        <div class="container hero-content">
-            <p class="hero-subtitle animate">Desde 1998</p>
-            <h1 class="hero-title animate delay-1">El arte de crear <span>vinos excepcionales</span></h1>
-            <p class="hero-text animate delay-2">Descubre nuestra colección de vinos premium elaborados con uvas Syrah y
-                Monastrell, cuidadosamente envejecidos en barrica para ofrecer una experiencia sensorial inigualable.
+    <section class="h-screen flex items-center relative overflow-hidden pt-[80px]" id="inicio">
+        <div class="absolute inset-0 bg-cover bg-center bg-[url('https://placehold.co/1920x1080/7d2e4c/f8f5f2?text=Bodega+Contreras')] -z-10">
+            <div class="absolute inset-0 bg-grafito/30 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-rosewood/30"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <p class="text-lg font-light tracking-[4px] uppercase mb-4 opacity-80 animate-in fade-in slide-in-from-top-4 duration-1000">Desde 1998</p>
+            <h1 class="text-6xl md:text-8xl font-thin leading-tight mb-6 animate-in fade-in slide-in-from-left-8 duration-1000 delay-200" style="font-family: 'Playfair Display', serif;">
+                El arte de crear <br><span class="font-normal text-latón">vinos excepcionales</span>
+            </h1>
+            <p class="text-xl max-w-xl mb-10 opacity-90 animate-in fade-in slide-in-from-left-8 duration-1000 delay-400">
+                Descubre nuestra colección de vinos **premium** elaborados con uvas Syrah y Monastrell, cuidadosamente envejecidos en barrica para ofrecer una experiencia sensorial inigualable.
             </p>
-            <div class="hero-buttons animate delay-3">
-                <a href="#vinos" class="btn btn-primary">Explorar Vinos</a>
-                <a href="#experiencia" class="btn" style="margin-left: 15px;">Visitar Bodega</a>
+            <div class="flex space-x-4 animate-in fade-in duration-1000 delay-600">
+                <a href="#vinos" class="px-8 py-3 bg-rosewood text-white border-2 border-rosewood rounded-full text-lg font-medium tracking-wide transition duration-premium hover:bg-white hover:text-rosewood hover:shadow-lg transform hover:-translate-y-1">
+                    Explorar Vinos
+                </a>
+                <a href="#experiencia" class="px-8 py-3 border-2 border-white text-white rounded-full text-lg font-medium tracking-wide transition duration-premium hover:bg-white hover:text-grafito hover:shadow-lg transform hover:-translate-y-1">
+                    Visitar Bodega
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="section" id="vinos">
-        <div class="container">
-            <h2 class="section-title">Nuestra Colección</h2>
-            <p class="section-subtitle">Tres líneas distintas que representan nuestra filosofía vinícola, cada una con
-                su propia personalidad y carácter.</p>
+    <section class="py-24 md:py-32" id="vinos">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-light text-grafito mb-4" style="font-family: 'Playfair Display', serif;">Nuestra Colección</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Tres líneas distintas que representan nuestra filosofía vinícola, cada una con su propia personalidad y carácter.
+                </p>
+            </div>
 
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image"
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-premium transform hover:-translate-y-2 border border-crema">
+                    <div class="h-80 bg-cover bg-center relative group"
                         style="background-image: url('https://placehold.co/600x400/c9a27e/2a2a2a?text=Zhiro');">
-                        <div class="product-badge">Novedad</div>
+                        <span class="absolute top-4 right-4 bg-rosewood text-white text-xs font-semibold uppercase px-3 py-1 rounded-full tracking-wider">Novedad</span>
+                        <div class="absolute inset-0 bg-grafito/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Zhiro</h3>
-                        <p class="product-desc">Un tinto semidulce que se bebe frío, basado en un coupage de Monastrell
-                            y Syrah pasadas por madera, con un ligero toque de carbónico que sorprende.</p>
-                        <div class="product-price">€18.90</div>
-                        <a href="#" class="product-link">Descubrir más</a>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-medium text-rosewood mb-2">Zhiro</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Un tinto semidulce que se bebe frío, basado en un coupage de Monastrell y Syrah pasadas por madera, con un ligero toque de carbónico que sorprende.</p>
+                        <div class="text-2xl font-bold text-grafito mb-4">€18.90</div>
+                        <a href="#" class="inline-block text-rosewood font-medium relative group text-lg">
+                            Descubrir más
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rosewood transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-image"
+                <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-premium transform hover:-translate-y-2 border border-crema">
+                    <div class="h-80 bg-cover bg-center relative group"
                         style="background-image: url('https://placehold.co/600x400/a8553d/ffffff?text=Sortius+Monastrell');">
-                        <div class="product-badge">Monovarietal</div>
+                        <span class="absolute top-4 right-4 bg-terra text-white text-xs font-semibold uppercase px-3 py-1 rounded-full tracking-wider">Monovarietal</span>
+                        <div class="absolute inset-0 bg-grafito/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Sortius Monastrell</h3>
-                        <p class="product-desc">Monovarietal de uva Monastrell con 3-4 meses de barrica. Aromas de rosa
-                            y frutos rojos, intenso de sabor.</p>
-                        <div class="product-price">€22.50</div>
-                        <a href="#" class="product-link">Descubrir más</a>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-medium text-rosewood mb-2">Sortius Monastrell</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Monovarietal de uva Monastrell con 3-4 meses de barrica. Aromas de rosa y frutos rojos, intenso de sabor.</p>
+                        <div class="text-2xl font-bold text-grafito mb-4">€22.50</div>
+                        <a href="#" class="inline-block text-rosewood font-medium relative group text-lg">
+                            Descubrir más
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rosewood transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-image"
+                <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-premium transform hover:-translate-y-2 border border-crema">
+                    <div class="h-80 bg-cover bg-center relative group"
                         style="background-image: url('https://placehold.co/600x400/7d2e4c/ffffff?text=Sortius+Syrah');">
-                        <div class="product-badge">Más premiado</div>
+                        <span class="absolute top-4 right-4 bg-rosewood text-white text-xs font-semibold uppercase px-3 py-1 rounded-full tracking-wider">Más premiado</span>
+                        <div class="absolute inset-0 bg-grafito/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Sortius Syrah</h3>
-                        <p class="product-desc">Monovarietal de uva Syrah con 3-4 meses de barrica. Aromas de violeta,
-                            ligeramente especiados y tostados en su justa medida.</p>
-                        <div class="product-price">€24.90</div>
-                        <a href="#" class="product-link">Descubrir más</a>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-medium text-rosewood mb-2">Sortius Syrah</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Monovarietal de uva Syrah con 3-4 meses de barrica. Aromas de violeta, ligeramente especiados y tostados en su justa medida.</p>
+                        <div class="text-2xl font-bold text-grafito mb-4">€24.90</div>
+                        <a href="#" class="inline-block text-rosewood font-medium relative group text-lg">
+                            Descubrir más
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rosewood transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-image"
+                <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-premium transform hover:-translate-y-2 border border-crema">
+                    <div class="h-80 bg-cover bg-center relative group"
                         style="background-image: url('https://placehold.co/600x400/2a2a2a/c9a27e?text=Uvio+C');">
-                        <div class="product-badge">Emblemático</div>
+                        <span class="absolute top-4 right-4 bg-grafito text-latón text-xs font-semibold uppercase px-3 py-1 rounded-full tracking-wider">Emblemático</span>
+                        <div class="absolute inset-0 bg-grafito/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Uvio C</h3>
-                        <p class="product-desc">De nuestras cepas más ancianas de Monastrell y la mejor selección de
-                            barricas. Vinos complejos y sofisticados de larga permanencia en barricas.</p>
-                        <div class="product-price">€45.00</div>
-                        <a href="#" class="product-link">Descubrir más</a>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-medium text-rosewood mb-2">Uvio C</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">De nuestras cepas más ancianas de Monastrell y la mejor selección de barricas. Vinos complejos y sofisticados de larga permanencia en barricas.</p>
+                        <div class="text-2xl font-bold text-grafito mb-4">€45.00</div>
+                        <a href="#" class="inline-block text-rosewood font-medium relative group text-lg">
+                            Descubrir más
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rosewood transition-all duration-300 group-hover:w-full"></span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
+    <section class="py-24 md:py-32 bg-rosewood/95 text-white" id="experiencia"
+        style="background-image: linear-gradient(rgba(125, 46, 76, 0.9), rgba(125, 46, 76, 0.9)), url('https://placehold.co/1920x800/a8553d/f8f5f2?text=Experiencia+Vinícola'); background-size: cover; background-position: center;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-5xl font-light text-white mb-4" style="font-family: 'Playfair Display', serif;">Experiencia Contreras</h2>
+            <p class="text-lg text-white/80 max-w-3xl mx-auto mb-16">
+                Más allá de una bodega, un lugar donde vivir experiencias únicas relacionadas con el mundo del vino.
+            </p>
 
-    <!-- Experience Section -->
-    <section class="section experience" id="experiencia">
-        <div class="container">
-            <h2 class="section-title">Experiencia Contreras</h2>
-            <p class="section-subtitle">Más allá de una bodega, un lugar donde vivir experiencias únicas relacionadas
-                con el mundo del vino.</p>
-
-            <div class="experience-cards">
-                <div class="experience-card">
-                    <div class="experience-icon">🍇</div>
-                    <h3>Visitas Guiadas</h3>
-                    <p>Recorridos por nuestras instalaciones donde descubrirás todo el proceso de elaboración de
-                        nuestros vinos, desde la viña hasta la botella.</p>
-                    <a href="#" class="btn">Reservar Visita</a>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 transition duration-premium hover:bg-white/20 transform hover:-translate-y-2">
+                    <i class="fas fa-wine-glass-alt text-5xl text-latón mb-5"></i>
+                    <h3 class="text-2xl font-medium mb-3">Catas Privadas</h3>
+                    <p class="opacity-90">Sesiones íntimas dirigidas por nuestro enólogo principal, descubriendo los matices y secretos de cada cosecha.</p>
+                    <a href="#" class="mt-4 inline-block text-latón font-semibold hover:text-white transition duration-300">Reservar Ahora →</a>
                 </div>
 
-                <div class="experience-card">
-                    <div class="experience-icon">🥂</div>
-                    <h3>Catas Premium</h3>
-                    <p>Experiencias de cata dirigidas por nuestros enólogos, donde aprenderás a apreciar las sutilezas
-                        de nuestros vinos más exclusivos.</p>
-                    <a href="#" class="btn">Reservar Cata</a>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 transition duration-premium hover:bg-white/20 transform hover:-translate-y-2">
+                    <i class="fas fa-tractor text-5xl text-latón mb-5"></i>
+                    <h3 class="text-2xl font-medium mb-3">Visitas al Viñedo</h3>
+                    <p class="opacity-90">Recorridos exclusivos por nuestras tierras centenarias para conectar con el origen y la tradición.</p>
+                    <a href="#" class="mt-4 inline-block text-latón font-semibold hover:text-white transition duration-300">Más Detalles →</a>
                 </div>
 
-                <div class="experience-card">
-                    <div class="experience-icon">🎉</div>
-                    <h3>Eventos Privados</h3>
-                    <p>Celebra tus eventos familiares o corporativos en un entorno único. Bodas, aniversarios, reuniones
-                        de empresa o cenas privadas.</p>
-                    <a href="#" class="btn">Organizar Evento</a>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 transition duration-premium hover:bg-white/20 transform hover:-translate-y-2">
+                    <i class="fas fa-utensils text-5xl text-latón mb-5"></i>
+                    <h3 class="text-2xl font-medium mb-3">Maridajes Gourmet</h3>
+                    <p class="opacity-90">Combinaciones de alta cocina con nuestros vinos, diseñadas por chefs con estrella Michelin.</p>
+                    <a href="#" class="mt-4 inline-block text-latón font-semibold hover:text-white transition duration-300">Ver Menús →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contacto">
-        <div class="container">
-            <h2 class="section-title">Contáctanos</h2>
-            <p class="section-subtitle">Estamos aquí para atender todas tus consultas y ayudarte a encontrar el vino
-                perfecto para cualquier ocasión.</p>
+    <section class="py-24 md:py-32" id="contacto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-light text-grafito mb-4" style="font-family: 'Playfair Display', serif;">Contáctenos</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Nuestro equipo está a su disposición para cualquier consulta, reserva o solicitud especial.
+                </p>
+            </div>
 
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Información de Contacto</h3>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div class="contact-text">
-                                <h4>Bodega</h4>
-                                <p>C/ De los Rios 2, 30812 Avilés-Lorca, Murcia</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div>
+                    <h3 class="text-3xl font-medium text-rosewood mb-8">Información de la Bodega</h3>
+                    <div class="space-y-6">
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-rosewood rounded-full flex items-center justify-center text-white text-xl flex-shrink-0 mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-grafito">Dirección</h4>
+                                <p class="text-gray-600">Carretera del Vino, Km 5. La Rioja Alavesa, España</p>
                             </div>
                         </div>
 
-                        <div class="contact-item">
-                            <div class="contact-icon">🏢</div>
-                            <div class="contact-text">
-                                <h4>Oficina Administrativa</h4>
-                                <p>C/ Avenida Juan Carlos 1, 6º G, 30800 Lorca, Murcia</p>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-rosewood rounded-full flex items-center justify-center text-white text-xl flex-shrink-0 mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-grafito">Teléfono</h4>
+                                <a href="tel:+34123456789" class="text-gray-600 hover:text-rosewood transition">+34 987 654 321</a>
                             </div>
                         </div>
 
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <div class="contact-text">
-                                <h4>Teléfono</h4>
-                                <p><a href="tel:+34685874594">+34 685 874 594</a></p>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-rosewood rounded-full flex items-center justify-center text-white text-xl flex-shrink-0 mr-4">
+                                <i class="fas fa-envelope"></i>
                             </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">✉️</div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <p><a href="mailto:info@bodegas-contreras.com">info@bodegas-contreras.com</a></p>
+                            <div>
+                                <h4 class="text-lg font-medium text-grafito">Email</h4>
+                                <a href="mailto:info@bodegascontreras.com" class="text-gray-600 hover:text-rosewood transition">info@bodegascontreras.com</a>
                             </div>
                         </div>
                     </div>
-
-                    <h3 style="margin-top: 40px; margin-bottom: 20px;">Pedidos Especiales</h3>
-                    <p>Si deseas realizar pedidos especiales como vinos a medida, paquetes personalizados, embotellados
-                        con tu etiqueta, reserva de barricas, botellas magnum, o envíos a Islas Canarias, no dudes en
-                        contactar con nosotros.</p>
                 </div>
 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Nombre completo" required>
+                <div>
+                    <form class="space-y-6 bg-white p-8 rounded-xl shadow-lg border border-crema">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <input type="text" placeholder="Su Nombre" class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-rosewood focus:ring-1 focus:ring-rosewood transition" required>
+                            <input type="email" placeholder="Su Email" class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-rosewood focus:ring-1 focus:ring-rosewood transition" required>
                         </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Correo electrónico" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Teléfono">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Tu mensaje" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h4>Bodegas Contreras</h4>
-                    <p style="color: #aaa; margin-bottom: 20px; line-height: 1.8;">Elaboramos vinos de alta calidad
-                        basados en uvas Syrah y Monastrell, con un proceso de envejecimiento en madera que garantiza una
-                        gran longevidad y evolución.</p>
-                    <div class="social-links">
-                        <a href="#">f</a>
-                        <a href="#">t</a>
-                        <a href="#">in</a>
-                        <a href="#">ig</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Nuestros Vinos</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Zhiro</a></li>
-                        <li><a href="#">Sortius Monastrell</a></li>
-                        <li><a href="#">Sortius Syrah</a></li>
-                        <li><a href="#">Uvio C</a></li>
-                        <li><a href="#">Ediciones Limitadas</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Experiencias</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Visitas a la Bodega</a></li>
-                        <li><a href="#">Catass Premium</a></li>
-                        <li><a href="#">Eventos Privados</a></li>
-                        <li><a href="#">Cursos de Enología</a></li>
-                        <li><a href="#">Reserva de Barricas</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Información</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Sobre Nosotros</a></li>
-                        <li><a href="#">Sostenibilidad</a></li>
-                        <li><a href="#">Premios y Reconocimientos</a></li>
-                        <li><a href="#">Prensa</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="copyright">
-                &copy; 2023 Bodegas Contreras S.L. Todos los derechos reservados.
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const nav = document.getElementById('nav');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            mobileMenuBtn.textContent = nav.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // Header Scroll Effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-
-                    // Close mobile menu if open
-                    if (nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                        mobileMenuBtn.textContent = '☰';
-                    }
-                }
-            });
-        });
-
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('¡Gracias por contactar con nosotros! Te responderemos lo antes posible.');
-            this.reset();
-        });
-
-        // Animation on Scroll
-        const animateElements = document.querySelectorAll('.animate');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        animateElements.forEach(element => {
-            element.style.opacity = 0;
-            element.style.transform = 'translateY(30px)';
-            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            observer.observe(element);
-        });
-    </script>
-</body>
-
-</html>
+                        <input type="text" placeholder="Asunto" class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-rosewood focus:ring-1 focus:ring-rosewood transition" required>
+                        <textarea placeholder="Su Mensaje o Solicitud Especial..." rows="6" class="w-full p-4 border border-gray-200 rounded-lg resize-y focus:
